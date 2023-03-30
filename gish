@@ -1,0 +1,17 @@
+#!/bin/fish
+
+git status
+
+while true
+    read --shell -P '> ' -c 'git ' -l input
+    if test $status -ne 0 || test $input = ""
+        break
+    end
+
+    if test $input = "git "
+        git status
+        continue
+    end
+
+    eval "$input"
+ end
