@@ -1,6 +1,12 @@
 #!/bin/fish
 
-git status
+function gish_status
+    git status
+    echo
+    git log --oneline -n 5
+end
+
+gish_status
 
 while true
     read --shell -P '> ' -c 'git ' -l input
@@ -9,7 +15,7 @@ while true
     end
 
     if test $input = "git "
-        git status
+        gish_status
         continue
     end
 
